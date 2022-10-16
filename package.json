@@ -1,0 +1,12 @@
+{
+  "name": "@ascii-art/char-subgrid",
+  "version": "0.0.1",
+  "main": "grid.js",
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0"
+  },
+  "dependencies": {
+    "extend-interface": "0.0.3"
+  }
+}
