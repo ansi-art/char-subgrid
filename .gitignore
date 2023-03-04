@@ -1,0 +1,13 @@
+# Structural
+node_modules
+.DS_Store
+
+# Editors
+*.sublime-workspace
+*.sublime-project # unless most use Sublime
+.vscode
+.nova
+*.code-workspace
+.idea
+*.swp
+*~
