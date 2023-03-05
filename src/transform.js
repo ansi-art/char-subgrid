@@ -12,6 +12,10 @@
     }
 }(this, function(extendInterface){
     /**
+     * Generate threshold maps base class
+     * @module @ansi-art/char-subgrid/src/transform
+     */
+    /**
      * The default constructor for SubGridTransformer
      * @class SubGridTransformer
      * @classdesc This provides an abstraction for grid based editing and compositing

@@ -11,6 +11,10 @@
         root.Ascii.Char.BlocksTransformer = factory(root.Ascii.Char.SingleCharTransformer);
     }
 }(this, function(Transformer){
+    /**
+     * Generate threshold maps as block characters
+     * @module @ansi-art/char-subgrid/src/blocks
+     */
     var blocksMap = {
         '1':'▘',
         '2':'▝',

@@ -11,6 +11,10 @@
         root.Ascii.Char.SlantsTransformer = factory(root.Ascii.Char.SingleCharTransformer);
     }
 }(this, function(Transformer){
+    /**
+     * Generate threshold maps as slanted characters
+     * @module @ansi-art/char-subgrid/src/slants
+     */
     var slantsMap = {
         '1':'▘',
         '2':'▝',

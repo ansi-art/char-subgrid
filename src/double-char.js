@@ -11,6 +11,10 @@ const boolArr2DToIndexes = function(arr){
 };
 
 const quadToChars = function(quad, map){
+    /**
+     * Generate threshold maps as dual quads base class
+     * @module @ansi-art/char-subgrid/src/double-char
+     */
     // a braille quad is 2 side by side chars 4x4
     // | 1 5 |
     // | 2 6 |

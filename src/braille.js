@@ -11,6 +11,10 @@
         root.Ascii.Char.BrailleTransformer = factory(root.Ascii.Char.DoubleCharTransformer);
     }
 }(this, function(Transformer){
+    /**
+    * Generate threshold maps as braille characters
+    * @module @ansi-art/char-subgrid/src/braille
+    */
     var brailleMap = {
         '1':'⠁','2':'⠂','3':'⠄','4':'⡀','5':'⠈','6':'⠐','7':'⠠','8':'⢀','12':'⠃',
         '13':'⠅','14':'⡁','15':'⠉','16':'⠑','17':'⠡','18':'⢁','23':'⠆','24':'⡂',

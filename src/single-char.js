@@ -11,6 +11,10 @@ const boolArr2DToIndexes = function(arr){
 };
 
 const doubleToBlocks = function(mini, map){
+    /**
+     * Generate threshold maps as mini-quads base class
+     * @module @ansi-art/char-subgrid/src/single-char
+     */
     // a mini quad is 1 char, 2x2
     // | 1 3 |
     // | 2 4 |
