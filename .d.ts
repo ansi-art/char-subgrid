@@ -1,48 +1,81 @@
 /**
- * UTF Block based SubGridTransformer
+ * Generate threshold maps as block characters
  */
-declare class AsciiCharBlocksTransformer extends AsciiCharSingleCharTransformer {
+declare module "@ansi-art/char-subgrid/src/blocks" {
+    /**
+     * UTF Block based SubGridTransformer
+     */
+    class AsciiCharBlocksTransformer extends AsciiCharSingleCharTransformer {
+    }
 }
 
 /**
- * UTF Block based SubGridTransformer
+ * Generate threshold maps as braille characters
  */
-declare class AsciiCharBlocksTransformer extends AsciiCharSingleCharTransformer {
+declare module "@ansi-art/char-subgrid/src/braille" {
+    /**
+     * UTF Block based SubGridTransformer
+     */
+    class AsciiCharBlocksTransformer extends AsciiCharDoubleCharTransformer {
+    }
 }
 
 /**
- * UTF Block based SubGridTransformer
+ * Generate threshold maps as dual quads base class
  */
-declare class AsciiCharSingleCharTransformer extends SubGridTransformer {
+declare module "@ansi-art/char-subgrid/src/double-char" {
+    /**
+     * UTF Block based SubGridTransformer
+     */
+    class AsciiCharDoubleCharTransformer extends SubGridTransformer {
+    }
 }
 
 /**
- * UTF Block based SubGridTransformer
+ * Generate threshold maps as mini-quads base class
  */
-declare class AsciiCharSlantsTransformer extends AsciiCharSingleCharTransformer {
+declare module "@ansi-art/char-subgrid/src/single-char" {
+    /**
+     * UTF Block based SubGridTransformer
+     */
+    class AsciiCharSingleCharTransformer extends SubGridTransformer {
+    }
 }
 
 /**
- * The default constructor for SubGridTransformer
+ * Generate threshold maps as slanted characters
  */
-declare class SubGridTransformer {
+declare module "@ansi-art/char-subgrid/src/slants" {
+    /**
+     * UTF Block based SubGridTransformer
+     */
+    class AsciiCharSlantsTransformer extends AsciiCharSingleCharTransformer {
+    }
 }
 
 /**
- * The map implementation (provided by implementations)
- * @returns mappedValue
+ * Generate threshold maps base class
  */
-declare function mapTo(value: string, mapFunction: (...params: any[]) => any): any;
-
-/**
- * The map implementation (provided by implementations)
- * @returns transformedValue
- */
-declare function transform(chunk: string): any;
-
-/**
- * The map implementation (provided by implementations)
- * @returns extendedSubGridTransformer
- */
-declare function extend(memberFunctions: any, constructor: (...params: any[]) => any): Class;
+declare module "@ansi-art/char-subgrid/src/transform" {
+    /**
+     * The default constructor for SubGridTransformer
+     */
+    class SubGridTransformer {
+    }
+    /**
+     * The map implementation (provided by implementations)
+     * @returns mappedValue
+     */
+    function mapTo(value: string, mapFunction: (...params: any[]) => any): any;
+    /**
+     * The map implementation (provided by implementations)
+     * @returns transformedValue
+     */
+    function transform(chunk: string): any;
+    /**
+     * The map implementation (provided by implementations)
+     * @returns extendedSubGridTransformer
+     */
+    function extend(memberFunctions: any, constructor: (...params: any[]) => any): Class;
+}
 

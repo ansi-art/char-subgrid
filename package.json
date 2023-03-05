@@ -26,6 +26,7 @@
         "increment-major": "npm version major",
         "test": "./node_modules/.bin/mocha",
         "lint": "./node_modules/.bin/eslint *.js src/*.js test/*.js",
+        "add-generated-files-to-commit": "git add docs/*.md; git add types/*.ts; git add .d.ts",
         "container-test": "docker build . -t  ansi-art/char-subgrid -f ./containers/test.dockerfile; docker logs --follow \"$(docker run -d ansi-art/char-subgrid)\"",
         "generate-artifacts" : "npm run generate-types; npm run generate-typescript-root; npm run generate-docs"
     },
@@ -36,7 +37,8 @@
         "container-test",
         "generate-types",
         "generate-typescript-root",
-        "generate-docs"
+        "generate-docs",
+        "add-generated-files-to-commit"
     ],
     "dependencies": {
         "extend-interface": "0.0.3"
