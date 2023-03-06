@@ -2,6 +2,24 @@
     "name": "@ansi-art/char-subgrid",
     "version": "3.0.0-alpha1",
     "main": "grid.js",
+    "description": "ASCII line drawing using subcharacter precision",
+      "keywords": [
+        "ascii",
+        "ansi",
+        "text",
+        "string",
+        "compositing"
+      ],
+      "author": "Abbey Hawk Sparrow <@khrome> (http://abbeyhawksparrow.com/)",
+      "contributors": [],
+      "bugs": {
+        "url": "https://github.com/ansi-art/char-subgrid/issues"
+      },
+      "license": "MIT",
+      "repository": {
+        "type": "git",
+        "url": "git://github.com/ansi-art/char-subgrid.git"
+      },
     "devDependencies": {
         "@commitlint/cli": "^17.4.4",
         "@commitlint/config-conventional": "^17.4.4",
@@ -27,7 +45,9 @@
         "test": "./node_modules/.bin/mocha",
         "lint": "./node_modules/.bin/eslint *.js src/*.js test/*.js",
         "add-generated-files-to-commit": "git add docs/*.md; git add types/*.ts; git add .d.ts",
-        "container-test": "docker build . -t  ansi-art/char-subgrid -f ./containers/test.dockerfile; docker logs --follow \"$(docker run -d ansi-art/char-subgrid)\"",
+        "container-test": "docker build . -t  char-subgrid -f ./containers/test.dockerfile; docker logs --follow \"$(docker run -d char-subgrid)\"",
+        "tag-current-version":"git tag -a $(cat package.json | jq '\"v\\(.version)\"' --unbuffered) -m \"Release Version\"",
+        "publish": "npm run tag-current-version; npm publish",
         "generate-artifacts" : "npm run generate-types; npm run generate-typescript-root; npm run generate-docs"
     },
     "precommit.colors": true,
