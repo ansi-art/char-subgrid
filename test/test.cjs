@@ -1,7 +1,7 @@
 /* global describe:false, it:false */
 const should = require('chai').should();
 
-const mapper = require('../grid.js');
+const mapper = require('../grid.cjs');
 should.exist(mapper);
 
 // make samples visually grokable

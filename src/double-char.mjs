@@ -1,3 +1,4 @@
+import { Transformer as TransformerBase } from './transform.mjs';
 const mapBitsToChar = function(code, map){
     if(map[code]) return map[code];
     console.log('CODE NOT FOUND:'+code);
@@ -43,33 +44,19 @@ const quadToChars = function(quad, map){
     return mapBitsToChar(boolArr2DToIndexes(bitsOne).join(''), map)+
         mapBitsToChar(boolArr2DToIndexes(bitsTwo).join(''), map);
 };
-    
-(function (root, factory){
-    if(typeof define === 'function' && define.amd){
-        // AMD. Register as an anonymous module.
-        define(['./transform'], factory);
-    }else if (typeof module === 'object' && module.exports){
-        module.exports = factory(require('./transform'));
-    }else{
-        // Browser globals (root is window)
-        if(!root.Ascii) root.Ascii = {};
-        if(!root.Ascii.Char) root.Ascii.Char = {};
-        root.Ascii.Char.DoubleCharTransformer = factory(root.Ascii.Char.Transformer);
+
+/**
+ * UTF Block based SubGridTransformer
+ * @class AsciiCharDoubleCharTransformer
+ * @classdesc This transformer converts a threshold map into 4x2 compact character matrices so each 4x4 is 2 chars. 
+ *    | 1 5 | 9  13 |
+ *    | 2 6 | 10 14 |
+ *    | 3 7 | 11 15 |
+ *    | 4 8 | 12 16 |
+ * @extends SubGridTransformer
+ */
+export const Transformer = TransformerBase.extend({
+    mapTo : function(value, map){
+        return quadToChars(value, map);
     }
-}(this, function(Transformer){
-    /**
-     * UTF Block based SubGridTransformer
-     * @class AsciiCharDoubleCharTransformer
-     * @classdesc This transformer converts a threshold map into 4x2 compact character matrices so each 4x4 is 2 chars. 
-     *    | 1 5 | 9  13 |
-     *    | 2 6 | 10 14 |
-     *    | 3 7 | 11 15 |
-     *    | 4 8 | 12 16 |
-     * @extends SubGridTransformer
-     */
-    return Transformer.extend({
-        mapTo : function(value, map){
-            return quadToChars(value, map);
-        }
-    });
-}));
+});

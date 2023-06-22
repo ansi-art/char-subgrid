@@ -1,34 +1,40 @@
 {
     "name": "@ansi-art/char-subgrid",
     "version": "3.0.0-alpha2",
-    "main": "grid.js",
+    "main": "grid.cjs",
+    "module": "grid.mjs",
     "description": "ASCII line drawing using subcharacter precision",
-      "keywords": [
+    "keywords": [
         "ascii",
         "ansi",
         "text",
         "string",
         "compositing"
-      ],
-      "author": "Abbey Hawk Sparrow <@khrome> (http://abbeyhawksparrow.com/)",
-      "contributors": [],
-      "bugs": {
+    ],
+    "author": "Abbey Hawk Sparrow <@khrome> (http://abbeyhawksparrow.com/)",
+    "contributors": [],
+    "bugs": {
         "url": "https://github.com/ansi-art/char-subgrid/issues"
-      },
-      "license": "MIT",
-      "repository": {
+    },
+    "license": "MIT",
+    "repository": {
         "type": "git",
         "url": "git://github.com/ansi-art/char-subgrid.git"
-      },
+    },
     "devDependencies": {
-        "@commitlint/cli": "^17.4.4",
-        "@commitlint/config-conventional": "^17.4.4",
-        "chai": "^4.3.6",
+        "@babel/cli": "^7.22.5",
+        "@babel/core": "^7.22.5",
+        "@babel/plugin-transform-modules-umd": "^7.22.5",
+        "@commitlint/cli": "^17.6.5",
+        "@commitlint/config-conventional": "^17.6.5",
+        "babel-plugin-search-and-replace": "^1.1.1",
+        "chai": "^4.3.7",
+        "environment-safe-chai": "^0.0.1",
         "eslint": "^8.35.0",
         "husky": "^8.0.3",
         "jsdoc": "^3.6.3",
         "jsdoc-to-markdown": "^8.0.0",
-        "mocha": "^10.0.0",
+        "mocha": "^10.2.0",
         "pre-commit": "^1.2.2",
         "tsd-jsdoc": "^2.5.0"
     },
@@ -42,17 +48,23 @@
         "increment-patch": "npm version patch",
         "increment-minor": "npm version minor",
         "increment-major": "npm version major",
-        "test": "./node_modules/.bin/mocha",
-        "lint": "./node_modules/.bin/eslint *.js src/*.js test/*.js",
+        "build": "npm run build-commonjs-root; npm run build-dist",
+        "build-dist": "./node_modules/.bin/babel src --out-dir dist --out-file-extension .cjs",
+        "build-commonjs-root": "./node_modules/.bin/babel grid.mjs > grid.cjs",
+        "test-require": "./node_modules/.bin/mocha test/test.cjs",
+        "test-import": "./node_modules/.bin/mocha test/test.mjs",
+        "test": "npm run test-require; npm run test-import",
+        "lint": "./node_modules/.bin/eslint *.mjs src/*.mjs test/*.mjs",
         "add-generated-files-to-commit": "git add docs/*.md; git add types/*.ts; git add .d.ts",
         "container-test": "docker build . -t  char-subgrid -f ./containers/test.dockerfile; docker logs --follow \"$(docker run -d char-subgrid)\"",
-        "tag-current-version":"git tag -a $(echo $(cat package.json | jq '(\"v\" + .version)' --unbuffered) | tr -d \"\\\"\") -m \"Release Version\"",
+        "tag-current-version": "git tag -a $(echo $(cat package.json | jq '(\"v\" + .version)' --unbuffered) | tr -d \"\\\"\") -m \"Release Version\"",
         "npm-publish": "npm run tag-current-version; git push --follow-tags; npm publish",
-        "generate-artifacts" : "npm run generate-types; npm run generate-typescript-root; npm run generate-docs"
+        "generate-artifacts": "npm run generate-types; npm run generate-typescript-root; npm run generate-docs"
     },
     "precommit.colors": true,
     "precommit": [
         "lint",
+        "build",
         "test",
         "container-test",
         "generate-types",
@@ -61,6 +73,6 @@
         "add-generated-files-to-commit"
     ],
     "dependencies": {
-        "extend-interface": "0.0.3"
+        "extend-interface": "^1.0.1"
     }
 }
