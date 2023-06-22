@@ -1,6 +1,6 @@
 {
     "name": "@ansi-art/char-subgrid",
-    "version": "3.0.0-alpha2",
+    "version": "3.0.0-alpha3",
     "main": "grid.cjs",
     "module": "grid.mjs",
     "description": "ASCII line drawing using subcharacter precision",
