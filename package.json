@@ -1,8 +1,31 @@
 {
     "name": "@ansi-art/char-subgrid",
-    "version": "3.0.0-alpha3",
+    "version": "3.0.0-alpha4",
+    "type":"module",
     "main": "grid.cjs",
     "module": "grid.mjs",
+    "exports": {
+        ".": {
+            "import": "./grid.mjs",
+            "require": "./grid.cjs"
+        },
+        "./src/tools.mjs": {
+            "import": "./grid.mjs",
+            "require": "./grid.cjs"
+        },
+        "./dist/tools.cjs": {
+            "import": "./grid.mjs",
+            "require": "./grid.cjs"
+        },
+        "./index.js": {
+            "import": "./grid.mjs",
+            "require": "./grid.cjs"
+        },
+        "./tools.js": {
+            "import": "./grid.mjs",
+            "require": "./grid.cjs"
+        }
+    },
     "description": "ASCII line drawing using subcharacter precision",
     "keywords": [
         "ascii",
